@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Page Jinja</title>
+	</head>
+	<body>
+	  <h1>Une page JINJA</h1>
+      {% if name%}
+         <p>Bonjour {{name}} !</p>
+      {% else %}
+        <p>Bonjour inconnu !</p>
+        {% endif %}
+	  <p>Si tout fonctionne vous verrez qu'il est {{heure}} h {{minute}} minutes et {{seconde}} secondes</p>
+	</body>
+</html>
