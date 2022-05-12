@@ -17,7 +17,7 @@ def demo():
         m = 'POST'
     p = donnee['prenom']
     n = donnee['nom']
-    return render_template("resultat.html", prenom=p, method=m,  nom=n)
+    return render_template("resultat.html", firstname=p, method=m,  lastname=n)
 
 
 app.run(debug=True)
