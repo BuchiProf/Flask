@@ -1,4 +1,4 @@
-## Structurer l'application et création d'un formulaire :
+## Structurer l'application et création d'un template :
 
 
 ### Les futurs projets deviendront plus volumineux et il est temps de structurer notre application. Ci-dessous la schématisation de ce projet :

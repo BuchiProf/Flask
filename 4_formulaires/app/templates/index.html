@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Formulaire</title>
+	</head>
+	<body>
+	  <h1>Ce formulaire utilise la méthode POST</h1>
+      <form action="http://localhost:5000/resultat" method="post">
+		<label>Nom</label> : <input type="text" name="nom" />
+		<label>Prénom</label> : <input type="text" name="prenom" />
+		<input type="submit" value="Envoyer POST" />
+</form>
+
+<h1>Ce formulaire utilise la méthode GET</h1>
+      <form action="http://localhost:5000/resultat" method="get">
+		<label>Nom</label> : <input type="text" name="nom" />
+		<label>Prénom</label> : <input type="text" name="prenom" />
+		<input type="submit" value="Envoyer GET" />
+</form>
+	</body>
+</html>
