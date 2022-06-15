@@ -10,5 +10,7 @@ def hello_world():
     return "Ceci est simplement un texte 'Hello World'!"
 
 
-#lancement de l'application en mode debugage
-app.run(debug=True)
+#lancement de l'application en mode debugage version Thonny
+app.run(threaded=False, use_reloader=False, debug=True)
+#lancement de l'application en mode debugage version classique
+#app.run(debug=True)

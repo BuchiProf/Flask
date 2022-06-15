@@ -1,7 +1,7 @@
 ## Création d'un formulaire :
 
 
-### En gardant la précédente structure, nous rajoutons une page correspondant au résultat de l'envoie d'un formulaire par les méthodes GET et POST :
+### En gardant la précédente structure, nous rajoutons une page correspondant au résultat de l'envoi d'un formulaire par les méthodes GET et POST :
 * app 
     * views.py 
     * templates 
