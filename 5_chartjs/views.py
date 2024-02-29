@@ -9,6 +9,18 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
+@app.route('/bar')
+def barre():
+    return render_template("bar.html")
+
+@app.route('/plot')
+def courbe():
+    return render_template("plot.html")
+
+@app.route('/multi')
+def multi_courbe():
+    return render_template("multi.html")
+
 
 #lancement de l'application en mode debugage version Thonny
 app.run(threaded=False, use_reloader=False, debug=True)

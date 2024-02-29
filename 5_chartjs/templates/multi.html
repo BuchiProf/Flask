@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphique à Lignes Multiples avec Axes Y Différents (Chart.js v4)</title>
+    <!-- Inclure la bibliothèque Chart.js v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Graphique à Lignes Multiples avec Axes Y Différents (Chart.js v4)</h1>
+    
+    <!-- Canvas pour afficher le graphique -->
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <!-- Script pour créer le graphique à lignes multiples avec axes Y différents -->
+    <script>
+        // Données de test (remplacez par vos propres données provenant de Flask)
+        const data = {
+            labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
+            datasets: [
+                {
+                    label: 'Ventes 2023',
+                    data: [50, 60, 70, 65, 80],
+                    yAxisID: 'y-axis-1',
+                    borderColor: 'rgb(54, 162, 235)',
+                    fill: false
+                },
+                {
+                    label: 'Revenus 2023',
+                    data: [1000, 1200, 1300, 1100, 1400],
+                    yAxisID: 'y-axis-2',
+                    borderColor: 'rgb(255, 99, 132)',
+                    fill: false
+                }
+            ]
+        };
+
+        // Configuration du graphique à lignes multiples avec axes Y différents
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        yAxes: [
+                            { id: 'y-axis-1', type: 'linear', position: 'left' },
+                            { id: 'y-axis-2', type: 'linear', position: 'right' }
+                        ]
+                    }
+                }
+            }
+        };
+
+        // Créer le graphique à lignes multiples avec axes Y différents
+        var myChart = new Chart(document.getElementById('myChart'), config);
+    </script>
+</body>
+</html>

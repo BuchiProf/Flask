@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphique en Courbe</title>
+    <!-- Inclure la bibliothèque Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Graphique en Courbe</h1>
+    
+    <!-- Canvas pour afficher le graphique -->
+    <canvas id="myChart" width="100%" height="100%"></canvas>
+
+    <!-- Script pour créer le graphique en courbe avec Chart.js -->
+    <script>
+        // Données de test (remplacez par vos propres données provenant de Flask)
+        const data = {
+            labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
+            datasets: [{
+                label: 'Progression mensuelle',
+                data: [10, 20, 30, 25, 40],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+
+        // Configuration du graphique en courbe
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // Créer le graphique en courbe avec Chart.js
+        var myChart = new Chart(document.getElementById('myChart'), config);
+    </script>
+</body>
+</html>
