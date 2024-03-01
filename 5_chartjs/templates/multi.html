@@ -12,16 +12,16 @@
             labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
             datasets: [
                 {
-                    label: 'Ventes 2023',
-                    data: [50, 60, 70, 65, 80],
-                    yAxisID: 'y-axis-1',
+                    label: 'températures 2023',
+                    data: [-10, 0, 5, 15, 20],
+                    yAxisID: 'y-temp',
                     borderColor: 'rgb(54, 162, 235)',
                     fill: false
                 },
                 {
-                    label: 'Revenus 2023',
-                    data: [1000, 1200, 1300, 1100, 1400],
-                    yAxisID: 'y-axis-2',
+                    label: 'humidité 2023',
+                    data: [90, 80, 75, 60, 87],
+                    yAxisID: 'y-humi',
                     borderColor: 'rgb(255, 99, 132)',
                     fill: false
                 }
@@ -33,16 +33,27 @@
             type: 'line',
             data: data,
             options: {
+                
                 scales: {
-                    y: {
-                        yAxes: [
-                            { id: 'y-axis-1', type: 'linear', position: 'left' },
-                            { id: 'y-axis-2', type: 'linear', position: 'right' }
-                        ]
+                    'y-temp': {
+                               id: 'y-temp', 
+                               type: 'linear', 
+                               position: 'left',
+                               suggestedMin: 0,
+                               ticks: {color: 'blue' } 
+                            },
+                    'y-humi':
+                            { id: 'y-humi', 
+                            type: 'linear', 
+                            position: 'right',
+                            suggestedMin: 0,
+                            ticks: {color: 'red' }  
+                        }
+                        
                     }
                 }
-            }
-        };
+            };
+        
 
         // Créer le graphique à lignes multiples avec axes Y différents
         var myChart = new Chart(document.getElementById('myChart'), config);
