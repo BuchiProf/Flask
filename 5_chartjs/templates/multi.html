@@ -1,6 +1,6 @@
 {%extends "index.html"%}
 {%block content%}
-    <h1>Graphique à Lignes Multiples avec Axes Y Différents (Chart.js v4)</h1>
+    <h1>Graphique à Lignes Multiples avec différents axes Y</h1>
     
     <!-- Canvas pour afficher le graphique -->
     <canvas id="myChart" style="height:100%;max-height:100%;width: 100%;max-width:600px"></canvas>
@@ -12,14 +12,14 @@
             labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
             datasets: [
                 {
-                    label: 'températures 2023',
+                    label: 'température 1',
                     data: [-10, 0, 5, 15, 20],
-                    yAxisID: 'y-temp',
+                    yAxisID: 'y-temp1',
                     borderColor: 'rgb(54, 162, 235)',
                     fill: false
                 },
                 {
-                    label: 'humidité 2023',
+                    label: 'humidité',
                     data: [90, 80, 75, 60, 87],
                     yAxisID: 'y-humi',
                     borderColor: 'rgb(255, 99, 132)',
@@ -35,19 +35,23 @@
             options: {
                 
                 scales: {
-                    'y-temp': {
-                               id: 'y-temp', 
+                    'y-temp1': {
+                               id: 'y-temp1', 
                                type: 'linear', 
                                position: 'left',
                                suggestedMin: 0,
-                               ticks: {color: 'blue' } 
-                            },
+                               ticks: {color: 'blue',
+                                       callback: function(value, index, values) {return value + '°C';} // Ajoutez l'unité '°C' à l'axe  
+                                        }
+                                },
                     'y-humi':
                             { id: 'y-humi', 
                             type: 'linear', 
                             position: 'right',
                             suggestedMin: 0,
-                            ticks: {color: 'red' }  
+                            ticks: {color: 'red',
+                                    callback: function(value, index, values) {return value + '%';} // Ajoutez l'unité '%' à l'axe 
+                                     }  
                         }
                         
                     }
