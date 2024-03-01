@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord avec Chart.js</title>
-    <!-- Inclure la bibliothèque Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+{%extends "index.html"%}
+{%block content%}
     <h1>Tableau de Bord avec Graphique Chart.js</h1>
     
     <!-- Canvas pour afficher le graphique -->
-    <canvas id="myChart" width="400" height="200"></canvas>
+    <canvas id="myChart" style="height:100%;max-height:100%;width: 100%;max-width:600px"></canvas>
 
     <!-- Script pour créer le graphique avec Chart.js -->
     <script>
@@ -44,5 +35,4 @@
         // Créer le graphique avec Chart.js
         var myChart = new Chart(document.getElementById('myChart'), config);
     </script>
-</body>
-</html>
+{% endblock %}

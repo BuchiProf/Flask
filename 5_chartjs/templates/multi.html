@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graphique à Lignes Multiples avec Axes Y Différents (Chart.js v4)</title>
-    <!-- Inclure la bibliothèque Chart.js v4 -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+{%extends "index.html"%}
+{%block content%}
     <h1>Graphique à Lignes Multiples avec Axes Y Différents (Chart.js v4)</h1>
     
     <!-- Canvas pour afficher le graphique -->
-    <canvas id="myChart" width="400" height="200"></canvas>
+    <canvas id="myChart" style="height:100%;max-height:100%;width: 100%;max-width:600px"></canvas>
 
     <!-- Script pour créer le graphique à lignes multiples avec axes Y différents -->
     <script>
@@ -56,5 +47,4 @@
         // Créer le graphique à lignes multiples avec axes Y différents
         var myChart = new Chart(document.getElementById('myChart'), config);
     </script>
-</body>
-</html>
+{%endblock%}
