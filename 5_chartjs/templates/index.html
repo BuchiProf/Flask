@@ -1,25 +1,29 @@
 <!doctype html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>index chart.js</title>
-		<!-- Inclure la bibliothèque Chart.js -->
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-			<!-->on insère ci dessous le lien cdn de DATE FNS l'adapter de temps <-->
-<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 
-	</head>
-	<body>
-	   <ul>
-        
-            <li><a href="{{ url_for('barre') }}">Un graphique en barres</a></li>
-            <li><a href="{{ url_for('courbe') }}">Un graphique en courbe simple</a></li>
-            <li><a href="{{ url_for('multi_courbe') }}">Un graphique en courbes multi axes</a></li>
-        
-    </ul>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>index chart.js</title>
+	<!-- Inclure la bibliothèque Chart.js -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<!-->on insère ci dessous le lien cdn de DATE FNS l'adapter de temps <-->
+	<script
+		src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+</head>
+
+<body>
+	<ul>
+
+		<li><a href="{{ url_for('barre') }}">Un graphique en barres</a></li>
+		<li><a href="{{ url_for('courbe') }}">Un graphique en courbe simple</a></li>
+		<li><a href="{{ url_for('multi_courbe') }}">Un graphique en courbes multi axes</a></li>
+
+	</ul>
 	<hr>
-		{% block content%}{%endblock%}
-	</body>
+	{% block content%}{%endblock%}
+</body>
+
 </html>
