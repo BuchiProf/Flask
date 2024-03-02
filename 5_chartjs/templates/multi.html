@@ -1,6 +1,6 @@
 {%extends "index.html"%}
 {%block content%}
-<h1>Graphique à Lignes Multiples avec différents axes Y</h1>
+<h1>Evolution des données de la ruche</h1>
 
 <!-- Canvas pour afficher le graphique -->
 <canvas id="myChart" style="height:100%;max-height:100%;width: 100%;max-width:600px"></canvas>
@@ -23,22 +23,34 @@
     { x: new Date('{{dico.date}}'), y: {{dico.humi}} },
     {% endfor %}
     ];
+    const masse = [
+    {%for dico in data %}
+{ x: new Date('{{dico.date}}'), y: {{dico.masse}} },
+{% endfor %}
+];
 
 
     const data = {
         datasets: [
             {
-                label: 'température ext',
+                label: 'Température ext',
                 data: temp_ext,
                 yAxisID: 'y-temp1',
                 borderColor: 'rgb(54, 162, 235)',
                 fill: false
             },
             {
-                label: 'humidité',
+                label: 'Humidité',
                 data: humi,
                 yAxisID: 'y-humi',
                 borderColor: 'rgb(255, 99, 132)',
+                fill: false
+            },
+            {
+                label: 'Masse',
+                data: masse,
+                yAxisID: 'y-masse',
+                borderColor: 'rgb(90, 255, 132)',
                 fill: false
             }
         ]
@@ -70,8 +82,7 @@
                         callback: function (value, index, values) { return value + '°C'; } // Ajoutez l'unité '°C' à l'axe  
                     }
                 },
-                'y-humi':
-                {
+                'y-humi': {
                     id: 'y-humi',
                     type: 'linear',
                     position: 'right',
@@ -80,6 +91,16 @@
                         color: 'red',
                         callback: function (value, index, values) { return value + '%'; } // Ajoutez l'unité '%' à l'axe 
                     }
+                    },
+                    'y-masse': {
+                        id: 'y-masse',
+                        type: 'linear',
+                        position: 'right',
+                        //suggestedMin: 0,
+                        ticks: {
+                            color: 'green',
+                            callback: function (value, index, values) { return value + 'g'; } 
+                        }
                 }
 
             },
