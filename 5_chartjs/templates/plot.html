@@ -10,11 +10,11 @@
         // Données de test (remplacez par vos propres données provenant de Flask)
         const mesData = [
       {x: new Date('2024-01-01T00:00:00'), y: 3},
-      {x: new Date('2024-01-01T01:00:00'), y: 4},
-      {x: new Date('2024-01-01T01:30:00'), y: 5},
-      {x: new Date('2024-01-01T02:00:00'), y: 6},
+      {x: new Date('2024-01-01T05:00:00'), y: 4},
+      {x: new Date('2024-01-01T10:30:00'), y: 5},
+      {x: new Date('2024-01-01T22:00:00'), y: 6},
       {x: new Date('2024-01-02T06:00:00'), y: 7},
-      {x: new Date('2024-01-02T15:00:00'), y: 8},
+      {x: new Date('2024-01-03T15:00:00'), y: 8},
     ]
     //setup de la courbe
         const data = {
@@ -38,7 +38,10 @@
 		x :{
 		type : 'time',
 		time : {
-		unit : 'hour'
+		    unit : 'day',
+            displayFormats: {
+                day: 'd MMMM yyyy' // Format personnalisé
+              }
 		}
 		},
 		//...jusqu'ici
