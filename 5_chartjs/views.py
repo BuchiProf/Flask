@@ -5,7 +5,18 @@ import datetime
 #création de l'application
 app = Flask(__name__)
 
-data = [{'masse': 57146.0, 'date': '2018-05-02T06:00:00', 'temp_ext': 9.12, 'temp2': 21.88, 'temp3': 27.99, 'humi': 64.6}, 
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+@app.route('/bar')
+def barre():
+    return render_template("bar.html")
+
+@app.route('/plot')
+def courbe():
+    
+    data = [{'masse': 57146.0, 'date': '2018-05-02T06:00:00', 'temp_ext': 9.12, 'temp2': 21.88, 'temp3': 27.99, 'humi': 64.6}, 
         {'masse': 57130.27, 'date': '2018-05-02T07:00:00', 'temp_ext': 9.01, 'temp2': 21.92, 'temp3': 28.02, 'humi': 66.23}, 
         {'masse': 57117.47, 'date': '2018-05-02T08:01:00', 'temp_ext': 9.03, 'temp2': 21.9, 'temp3': 28.13, 'humi': 64.76}, 
         {'masse': 57113.73, 'date': '2018-05-02T09:01:00', 'temp_ext': 9.48, 'temp2': 22.14, 'temp3': 28.3, 'humi': 64.16}, 
@@ -26,17 +37,7 @@ data = [{'masse': 57146.0, 'date': '2018-05-02T06:00:00', 'temp_ext': 9.12, 'tem
         {'masse': 56538.62, 'date': '2018-05-03T00:00:00', 'temp_ext': 11.36, 'temp2': 24.19, 'temp3': 31.84, 'humi': 64.8}, 
         {'masse': 56534.4, 'date': '2018-05-03T01:00:00', 'temp_ext': 10.8, 'temp2': 23.71, 'temp3': 31.47, 'humi': 66.35}]
 
-@app.route('/')
-def index():
-    return render_template("index.html")
-
-@app.route('/bar')
-def barre():
-    return render_template("bar.html")
-
-@app.route('/plot')
-def courbe():
-    return render_template("plot.html")
+    return render_template("plot.html", data = data)
 
 @app.route('/multi')
 def multi_courbe():

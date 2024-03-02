@@ -22,7 +22,7 @@
       label += context.parsed.y + '°C';
       return label;
     };
-
+/*
     // Données de test (remplacez par vos propres données provenant de Flask)
     const mesData = [
         { x: new Date('2024-01-01T00:00:00'), y: 3 },
@@ -31,7 +31,13 @@
         { x: new Date('2024-01-01T22:00:00'), y: 6 },
         { x: new Date('2024-01-02T06:00:00'), y: 7 },
         { x: new Date('2024-01-03T15:00:00'), y: 8 },
-    ];
+    ];*/
+    //formatage jinja des données
+    const mesData = [
+        {%for dico in data%}
+            {x: new Date('{{dico.date}}'), y: {{dico.temp_ext}} },
+        {% endfor %}
+    ]
     //setup de la courbe
     const data = {
 
@@ -54,7 +60,7 @@
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'day',
+                        unit: 'hour',
                         displayFormats: {
                             day: 'd MMM y' // Format personnalisé https://date-fns.org/v2.25.0/docs/format
                         }
