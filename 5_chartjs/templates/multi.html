@@ -1,66 +1,100 @@
 {%extends "index.html"%}
 {%block content%}
-    <h1>Graphique à Lignes Multiples avec différents axes Y</h1>
-    
-    <!-- Canvas pour afficher le graphique -->
-    <canvas id="myChart" style="height:100%;max-height:100%;width: 100%;max-width:600px"></canvas>
+<h1>Graphique à Lignes Multiples avec différents axes Y</h1>
 
-    <!-- Script pour créer le graphique à lignes multiples avec axes Y différents -->
-    <script>
-        // Données de test (remplacez par vos propres données provenant de Flask)
-        const data = {
-            labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai'],
-            
-            datasets: [
-                {
-                    label: 'température 1',
-                    data: [-10, 0, 5, 15, 20],
-                    yAxisID: 'y-temp1',
-                    borderColor: 'rgb(54, 162, 235)',
-                    fill: false
-                },
-                {
-                    label: 'humidité',
-                    data: [90, 80, 75, 60, 87],
-                    yAxisID: 'y-humi',
-                    borderColor: 'rgb(255, 99, 132)',
-                    fill: false
-                }
-            ]
-        };
+<!-- Canvas pour afficher le graphique -->
+<canvas id="myChart" style="height:100%;max-height:100%;width: 100%;max-width:600px"></canvas>
 
-        // Configuration du graphique à lignes multiples avec axes Y différents
-        const config = {
-            type: 'line',
-            data: data,
-            options: {
-                
-                scales: {
-                    'y-temp1': {
-                               id: 'y-temp1', 
-                               type: 'linear', 
-                               position: 'left',
-                               suggestedMin: 0,
-                               ticks: {color: 'blue',
-                                       callback: function(value, index, values) {return value + '°C';} // Ajoutez l'unité '°C' à l'axe  
-                                        }
-                                },
-                    'y-humi':
-                            { id: 'y-humi', 
-                            type: 'linear', 
-                            position: 'right',
-                            suggestedMin: 0,
-                            ticks: {color: 'red',
-                                    callback: function(value, index, values) {return value + '%';} // Ajoutez l'unité '%' à l'axe 
-                                     }  
+<!-- Script pour créer le graphique à lignes multiples avec axes Y différents -->
+<script>
+    // Fonction pour formater le titre du tooltip en x
+    function formatPopUpX(context) {
+        var date = context[0].parsed.x
+        return 'Date: ' + new Intl.DateTimeFormat('fr-FR', { dateStyle: 'full', timeStyle: 'short' }).format(date);
+    };
+    // Données de test (remplacez par vos propres données provenant de Flask)
+    const temp_ext = [
+        {%for dico in data %}
+    { x: new Date('{{dico.date}}'), y: {{dico.temp_ext}} },
+    {% endfor %}
+    ];
+    const humi = [
+        {%for dico in data %}
+    { x: new Date('{{dico.date}}'), y: {{dico.humi}} },
+    {% endfor %}
+    ];
+
+
+    const data = {
+        datasets: [
+            {
+                label: 'température ext',
+                data: temp_ext,
+                yAxisID: 'y-temp1',
+                borderColor: 'rgb(54, 162, 235)',
+                fill: false
+            },
+            {
+                label: 'humidité',
+                data: humi,
+                yAxisID: 'y-humi',
+                borderColor: 'rgb(255, 99, 132)',
+                fill: false
+            }
+        ]
+    };
+
+    // Configuration du graphique à lignes multiples avec axes Y différents
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'hour',
+                        displayFormats: {
+                            day: 'd MMM y' // Format personnalisé https://date-fns.org/v2.25.0/docs/format
                         }
-                        
+                    }
+                },
+                'y-temp1': {
+                    id: 'y-temp1',
+                    type: 'linear',
+                    position: 'left',
+                    suggestedMin: 0,
+                    ticks: {
+                        color: 'blue',
+                        callback: function (value, index, values) { return value + '°C'; } // Ajoutez l'unité '°C' à l'axe  
+                    }
+                },
+                'y-humi':
+                {
+                    id: 'y-humi',
+                    type: 'linear',
+                    position: 'right',
+                    suggestedMin: 0,
+                    ticks: {
+                        color: 'red',
+                        callback: function (value, index, values) { return value + '%'; } // Ajoutez l'unité '%' à l'axe 
                     }
                 }
-            };
-        
 
-        // Créer le graphique à lignes multiples avec axes Y différents
-        var myChart = new Chart(document.getElementById('myChart'), config);
-    </script>
+            },
+            plugins: {
+                tooltip: {
+                    callbacks:{
+                        title: formatPopUpX
+                    }
+                }
+            }
+        }
+    };
+
+
+    // Créer le graphique à lignes multiples avec axes Y différents
+    var myChart = new Chart(document.getElementById('myChart'), config);
+</script>
 {%endblock%}

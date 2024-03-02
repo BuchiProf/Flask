@@ -22,16 +22,7 @@
       label += context.parsed.y + '°C';
       return label;
     };
-/*
-    // Données de test (remplacez par vos propres données provenant de Flask)
-    const mesData = [
-        { x: new Date('2024-01-01T00:00:00'), y: 3 },
-        { x: new Date('2024-01-01T05:00:00'), y: 4 },
-        { x: new Date('2024-01-01T10:30:00'), y: 5 },
-        { x: new Date('2024-01-01T22:00:00'), y: 6 },
-        { x: new Date('2024-01-02T06:00:00'), y: 7 },
-        { x: new Date('2024-01-03T15:00:00'), y: 8 },
-    ];*/
+
     //formatage jinja des données
     const mesData = [
         {%for dico in data%}
@@ -42,7 +33,7 @@
     const data = {
 
         datasets: [{
-            label: 'Température',
+            label: 'Température ext',
             data: mesData,
             fill: false,
             borderColor: 'rgb(75, 192, 192)',
