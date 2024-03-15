@@ -7,6 +7,17 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 	<title>index chart.js</title>
+	<style>
+        .container {
+            display: flex;
+            align-items: center;
+			
+        }
+        .image {
+            margin : 10px;  /*Espace entre l'image et la liste */
+			height: 60px;
+        }
+    </style>
 	<!-- Inclure la bibliothèque Chart.js -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!--on insère ci dessous le lien cdn de DATE FNS l'adapter de temps -->
@@ -16,6 +27,9 @@
 </head>
 
 <body>
+	<div class="container">
+        <img src="{{ url_for('static', filename='bee_marchal.png')}}" alt="logo des ruches du Marchal" class="image">
+		
 	<ul>
 
 		<li><a href="{{ url_for('barre') }}">Un graphique en barres</a></li>
@@ -23,6 +37,8 @@
 		<li><a href="{{ url_for('multi_courbe') }}">Un graphique en courbes multi axes</a></li>
 
 	</ul>
+	</div>
+
 	<hr>
 	{% block content%}{%endblock%}
 </body>
